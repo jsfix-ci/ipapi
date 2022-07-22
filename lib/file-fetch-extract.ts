@@ -26,7 +26,9 @@ const downloadEdition = async (downloadFileLocation: string, editionId: string, 
 
   const cityUrl = getUrl(editionId, suffix);
   const response = await fetch(cityUrl);
-  if (!response.ok) throw new Error(`unexpected response ${response.statusText}`);
+  if (!response.ok) throw new Error(`unexpected response ${/* TODO: JSFIX could not patch the breaking change:
+  Response.statusText no longer sets a default message derived from the HTTP status code*/
+  response.statusText}`);
   endAction();
 
   const zipFilePath = getZipFilePath(downloadFileLocation, editionId, suffix);
